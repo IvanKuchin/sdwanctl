@@ -10,8 +10,16 @@
             "request": "launch",
             "mode": "auto",
             "program": "${workspaceFolder}/main.go",
-            "args": ["describe", "device", "430564e8-457e-439a-a8a8-ccd574211400"]
+            "args": ["describe", "template", "input", "10.5.7.2"]
         },
+        // {
+        //     "name": "describe device",
+        //     "type": "go",
+        //     "request": "launch",
+        //     "mode": "auto",
+        //     "program": "${workspaceFolder}/main.go",
+        //     "args": ["describe", "device", "430564e8-457e-439a-a8a8-ccd574211400"]
+        // },
         // {
         //     "name": "get devices",
         //     "type": "go",

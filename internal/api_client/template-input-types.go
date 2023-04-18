@@ -4,13 +4,9 @@ type TemplateInput struct {
 	Entry map[string]string
 }
 
-type TemplateInputTemp struct {
-	Entry map[string]interface{}
-}
-
 type TemplateInputList struct {
 	TemplateInput     []TemplateInput
-	TemplateInputTemp []TemplateInputTemp `json:"data"`
+	TemplateInputTemp []map[string]interface{} `json:"data"`
 }
 
 type RequestTemplateInput struct {

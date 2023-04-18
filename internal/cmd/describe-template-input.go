@@ -42,7 +42,7 @@ var describeTemplateInputCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		system_device := templ_input_list.TemplateInputTemp[0]
+		system_device := templ_input_list.TemplateInput[0]
 		describeTemplateInput(system_device)
 	},
 }
@@ -52,7 +52,7 @@ func init() {
 	describeTemplateCmd.AddCommand(describeTemplateInputCmd)
 }
 
-func describeTemplateInput(templ_input apiclient.TemplateInputTemp) {
+func describeTemplateInput(templ_input apiclient.TemplateInput) {
 	for k, v := range templ_input.Entry {
 		fmt.Printf("%s: %s\n", k, v)
 	}

@@ -30,13 +30,21 @@ func DescribeTemplateInputByDevID(cfg *configreader.Config, device_id string) (T
 		return TemplateInputList{}, err
 	}
 
-	fmt.Println(string(content))
-
 	system_device_list := TemplateInputList{}
 	if err := json.Unmarshal(content, &system_device_list); err != nil {
 		error_message := "failed to unmarshal system device list"
 		fmt.Printf("ERROR: %s (%s)\n", error_message, err.Error())
 		return TemplateInputList{}, errors.New(error_message)
+	}
+
+	for _, temp_input_temp := range system_device_list.TemplateInputTemp {
+		temp_input := TemplateInput{}
+		temp_input.Entry = make(map[string]string)
+
+		for k, v := range temp_input_temp {
+			temp_input.Entry[k] = fmt.Sprintf("%v", v)
+		}
+		system_device_list.TemplateInput = append(system_device_list.TemplateInput, temp_input)
 	}
 
 	return system_device_list, nil
