@@ -68,13 +68,6 @@ func getBearerToken(cfg *configreader.Config) (string, error) {
 	// 	fmt.Printf("Header field %q, Value %q\n", k, v)
 	// }
 
-	// Read the response body
-	// body, err := ioutil.ReadAll(resp.Body)
-	// if err != nil {
-	// 	log.Println("Error reading response body:", err)
-	// 	return "", err
-	// }
-
 	return bearer_token, err
 }
 
