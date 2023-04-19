@@ -9,16 +9,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var describeTemplateCmd = &cobra.Command{
-	Use:   "template",
-	Short: "Get template info",
-	Long:  "Get template info",
+var repostCmd = &cobra.Command{
+	Use:   "repost",
+	Short: "Repost to a device w/o changes",
+	Long:  "Repost to a device w/o changes",
 }
 
-var describeTemplateInputCmd = &cobra.Command{
-	Use:   "input",
-	Short: "Get feature template input",
-	Long:  "Get feature template input",
+var repostTemplateInputCmd = &cobra.Command{
+	Use:   "template",
+	Short: "Repost to a device w/o changes",
+	Long:  "Repost to a device w/o changes",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 1 {
 			fmt.Println("Please specify a single deviceID")
@@ -43,18 +43,17 @@ var describeTemplateInputCmd = &cobra.Command{
 		}
 
 		template_input := templ_input_list.TemplateInput[0]
-		describeTemplateInput(template_input)
+
+		err = apiclient.RepostTemplate(config_reader.Cfg, template_input)
+		if err != nil {
+			os.Exit(1)
+		}
+
+		fmt.Println("Repost to deviceID " + device_id + " is successful")
 	},
 }
 
 func init() {
-	describeCmd.AddCommand(describeTemplateCmd)
-	describeTemplateCmd.AddCommand(describeTemplateInputCmd)
-}
-
-func describeTemplateInput(templ_input apiclient.TemplateInput) {
-	fmt.Println("Device template input:")
-	for k, v := range templ_input.Entry {
-		fmt.Printf("%s: %s\n", k, v)
-	}
+	rootCmd.AddCommand(repostCmd)
+	repostCmd.AddCommand(repostTemplateInputCmd)
 }

@@ -10,8 +10,16 @@
             "request": "launch",
             "mode": "auto",
             "program": "${workspaceFolder}/main.go",
-            "args": ["describe", "template", "input", "10.5.7.2"]
+            "args": ["repost", "template", "10.5.7.2"]
         },
+        // {
+        //     "name": "describe device",
+        //     "type": "go",
+        //     "request": "launch",
+        //     "mode": "auto",
+        //     "program": "${workspaceFolder}/main.go",
+        //     "args": ["describe", "template", "input", "10.5.7.2"]
+        // },
         // {
         //     "name": "describe device",
         //     "type": "go",

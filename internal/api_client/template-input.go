@@ -44,6 +44,7 @@ func DescribeTemplateInputByDevID(cfg *configreader.Config, device_id string) (T
 		for k, v := range temp_input_temp {
 			temp_input.Entry[k] = fmt.Sprintf("%v", v)
 		}
+		temp_input.Entry["csv-templateId"] = system_devices.Devices[0].TemplateID
 		system_device_list.TemplateInput = append(system_device_list.TemplateInput, temp_input)
 	}
 
