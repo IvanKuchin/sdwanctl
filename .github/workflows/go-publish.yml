@@ -22,11 +22,6 @@ jobs:
     - name: Mod tidy
       run: go mod tidy
 
-    - name: Install zip
-      run: |
-        sudo apt update
-        sudo apt install zip -y
-
     - name: Linux build
       run: |
         go build -o cmd/sdwanctl .
@@ -45,7 +40,7 @@ jobs:
       run: |
         GOOS=darwin GOARCH=amd64 go build -o cmd/sdwanctl .
         cd ./cmd
-        tar -czf sdwanctl-darwin-${{ github.event.release.tag_name }}.zip ./sdwanctl
+        tar -czf sdwanctl-darwin-${{ github.event.release.tag_name }}.tar.gz ./sdwanctl
         rm ./sdwanctl
 
     - name: Upload release assets
