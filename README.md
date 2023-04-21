@@ -33,8 +33,8 @@ current-context: home-lab
 ```
 
 Currently supported API-calls:
-- `sdwanctl get devices` - list all devices in vManage
-- `sdwanctl get config {deviceId}` - collect config from device
-- `sdwanctl describe device {deviceId}` - detailed info about device
-- `sdwanctl describe system device {deviceId}` - detailed info about device
+- `sdwanctl get devices` - list all devices in a vManage
+- `sdwanctl get config {deviceId}` - collect config from a device
+- `sdwanctl describe device {deviceId}` - detailed info about a device
+- `sdwanctl describe system device {deviceId}` - detailed info about a device
 - `sdwanctl describe template input {deviceId}` - collect template inputs for all feature templates
