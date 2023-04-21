@@ -22,6 +22,11 @@ jobs:
     - name: Mod tidy
       run: go mod tidy
 
+    - name: Install zip
+      run: |
+        apt update
+        apt install zip -y
+
     - name: Linux build
       run: |
         go build -o cmd/sdwanctl .
@@ -33,8 +38,23 @@ jobs:
       run: |
         GOOS=windows GOARCH=amd64 go build -o cmd/sdwanctl.exe .
         cd ./cmd
-        tar -czf sdwanctl-windows-${{ github.event.release.tag_name }}.tar.gz ./sdwanctl.exe
+        zip sdwanctl-windows-${{ github.event.release.tag_name }}.zip ./sdwanctl.exe
         rm ./sdwanctl.exe
+
+    - name: Darwin build
+      run: |
+        GOOS=darwin GOARCH=amd64 go build -o cmd/sdwanctl .
+        cd ./cmd
+        tar -czf sdwanctl-darwin-${{ github.event.release.tag_name }}.zip ./sdwanctl
+        rm ./sdwanctl
+
+    - name: Upload release assets
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          cmd/sdwanctl-darwin-${{ github.event.release.tag_name }}.tar.gz
+          cmd/sdwanctl-linux-${{ github.event.release.tag_name }}.tar.gz
+          cmd/sdwanctl-windows-${{ github.event.release.tag_name }}.zip
 
     - name: Upload linux artifact
       uses: actions/upload-artifact@v3
