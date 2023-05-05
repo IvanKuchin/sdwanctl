@@ -38,3 +38,4 @@ Currently supported API-calls:
 - `sdwanctl describe device {deviceId}` - detailed info about a device
 - `sdwanctl describe system device {deviceId}` - detailed info about a device
 - `sdwanctl describe template input {deviceId}` - collect template inputs for all feature templates
+- `sdwanctl repost {deviceId}` - workaround to CDETS ID [CSCwc54860](https://bst.cloudapps.cisco.com/bugsearch/bug/CSCwc54860) 
